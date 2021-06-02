@@ -1,0 +1,23 @@
+{
+  "name": "plataforma_duvidas",
+  "version": "1.0.0",
+  "description": "Plataforma semelhante ao Yahoo Respostas, Brainly, etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/higorsantana-omega/Plataforma_Duvidas.git"
+  },
+  "author": "Higor Santana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/higorsantana-omega/Plataforma_Duvidas/issues"
+  },
+  "homepage": "https://github.com/higorsantana-omega/Plataforma_Duvidas#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
+  }
+}
