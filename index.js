@@ -6,25 +6,14 @@ app.use(express.static('public')) // Usar arquivos estaticos
 
 
 // Resposta e requirição
-app.get("/:nome/:lang", (req, res) => {
-    let nome = req.params.nome
-    let language = req.params.lang
-    var exibirMsg = false;
-
-    let produto = [
-        {nome: 'Leite', preco: 1.69},
-        {nome: 'Laranjas', preco: 2.69},
-        {nome: 'Frango', preco: 39.69}
-    ]
+app.get("/", (req, res) => {
     // Renderizar o ejs 
-    res.render("index", {
-        // Uso de variaveis
-        nome: nome,
-        language: language,
-        inscritos: 2018,
-        msg: exibirMsg,
-        produtos: produto
-    })
+    res.render("index")
+})
+
+app.get("/perguntar", (req, res) => {
+    // Renderizar o ejs 
+    res.render("perguntar")
 })
 
 app.listen(8080, () => {
