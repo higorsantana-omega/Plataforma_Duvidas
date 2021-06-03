@@ -1,9 +1,26 @@
-const express = require("express") // Importar o express
-const app = express() // Atribuir para app
+let express = require('express'), // Importar express
+    app     = express(), // Instanciar express
+    port = parseInt(process.env.PORT, 10) || 8080;
+
+let bodyParser = require('body-parser'); // Importar bodyparser || é usado para receber formulario
+app.use(bodyParser.urlencoded({extended: false}));
+
+// Ouvir na porta
+// E exibir o que aparecera
+app.listen(port, () => {
+    console.log("Rodando")
+})
 
 app.set('view engine', 'ejs') // Setar o motor de visu como ejs
 app.use(express.static('public')) // Usar arquivos estaticos
 
+
+//  Body parser 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
+
+// ===== rotas ===== 
 
 // Resposta e requirição
 app.get("/", (req, res) => {
@@ -17,9 +34,8 @@ app.get("/perguntar", (req, res) => {
 })
 
 app.post("/salvarpergunta", (req, res) => {
-    res.send("Formulario recebido")
+    let titulo = req.body.titulo; // Receber valor do input titulo
+    let descricao = req.body.descricao; // Receber valor do textarea descricao
+    res.send("Formulario recebido " + titulo + " " + "descricao " + descricao)
 })
 
-app.listen(8080, () => {
-    console.log("Rodando")
-})
