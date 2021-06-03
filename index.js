@@ -3,7 +3,18 @@ let express = require('express'), // Importar express
     port = parseInt(process.env.PORT, 10) || 8080;
 
 let bodyParser = require('body-parser'); // Importar bodyparser || é usado para receber formulario
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+const connection = require('./database/database')
+connection
+    .authenticate()
+    // promisse
+    .then(() => {
+        console.log("Conexão feita")
+    })
+    .catch((err) => {
+        console.log('Erro banco de dados')
+    })
 
 // Ouvir na porta
 // E exibir o que aparecera
