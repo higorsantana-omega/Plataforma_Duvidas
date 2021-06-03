@@ -16,6 +16,9 @@ connection
         console.log('Erro banco de dados')
     })
 
+// Importar tabela 
+const perguntaModel = require("./database/Pergunta")
+
 // Ouvir na porta
 // E exibir o que aparecera
 app.listen(port, () => {
