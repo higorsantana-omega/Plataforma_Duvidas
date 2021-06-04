@@ -38,8 +38,15 @@ app.use(bodyParser.json())
 
 // Resposta e requirição
 app.get("/", (req, res) => {
+    // Selecionar tudo do banco de dados
+    // e percorrer todas as perguntas no banco de dados
+    Pergunta.findAll({ raw: true }).then(perguntas => {
+        // Mandar perguntas para o frontend
+        res.render("index", {
+            perguntas: perguntas
+        })
+    })
     // Renderizar o ejs 
-    res.render("index")
 })
 
 app.get("/perguntar", (req, res) => {
