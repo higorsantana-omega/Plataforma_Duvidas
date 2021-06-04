@@ -40,7 +40,10 @@ app.use(bodyParser.json())
 app.get("/", (req, res) => {
     // Selecionar tudo do banco de dados
     // e percorrer todas as perguntas no banco de dados
-    Pergunta.findAll({ raw: true }).then(perguntas => {
+    Pergunta.findAll({
+        raw: true, order: [
+        ['id', 'DESC'] // ASC = Crescente || DESC
+    ] }).then(perguntas => {
         // Mandar perguntas para o frontend
         res.render("index", {
             perguntas: perguntas
