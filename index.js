@@ -3,7 +3,7 @@ let express = require('express'), // Importar express
     port = parseInt(process.env.PORT, 10) || 8080;
 
 let bodyParser = require('body-parser'); // Importar bodyparser || é usado para receber formulario
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
 
 const connection = require('./database/database')
 connection
@@ -13,11 +13,11 @@ connection
         console.log("Conexão feita")
     })
     .catch((err) => {
-        console.log('Erro banco de dados')
+        console.log('Erro banco de dados') 
     })
 
 // Importar tabela 
-const perguntaModel = require("./database/Pergunta")
+const Pergunta = require("./database/Pergunta")
 
 // Ouvir na porta
 // E exibir o que aparecera
@@ -48,8 +48,20 @@ app.get("/perguntar", (req, res) => {
 })
 
 app.post("/salvarpergunta", (req, res) => {
+    // Receber dados do formulario e armazenar nas variaveis
     let titulo = req.body.titulo; // Receber valor do input titulo
     let descricao = req.body.descricao; // Receber valor do textarea descricao
-    res.send("Formulario recebido " + titulo + " " + "descricao " + descricao)
+    // Salvar no banco de dados
+    // INSERT
+    Pergunta.create({
+        // Dados que vem das variaveis acima
+        titulo: titulo,
+        descricao: descricao
+    }).then(() => {
+        // Redirecionar o usuario para a pag principal
+        res.redirect("/")
+    })
 })
+
+
 
