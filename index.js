@@ -19,6 +19,9 @@ connection
 // Importar tabela 
 const Pergunta = require("./database/Pergunta")
 
+// Importar db de respostas
+const Resposta = require("./database/Resposta")
+
 // Ouvir na porta
 // E exibir o que aparecera
 app.listen(port, () => {
