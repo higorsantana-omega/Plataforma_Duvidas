@@ -85,9 +85,16 @@ app.get("/pergunta/:id", (req, res) => {
         // apos procurar
     }).then(pergunta => {
         if (pergunta != undefined) { // Caso a pergunta seja encontrada
-            res.render("pergunta", {
-                pergunta: pergunta
+            Resposta.findAll({
+                where: { perguntaId: pergunta.id },
+                order: [['id', 'DESC']]
+            }).then(respostas => {
+                res.render("pergunta", {
+                    pergunta: pergunta,
+                    respostas: respostas
+                })
             })
+            
         } else { // Se ela não for encontrada...
             res.redirect("/")
         }
