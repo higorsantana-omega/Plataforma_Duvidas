@@ -73,5 +73,21 @@ app.post("/salvarpergunta", (req, res) => {
     })
 })
 
+app.get("/pergunta/:id", (req, res) => {
+    let id = req.params.id;
+    // procurar a id no banco de dados
+    Pergunta.findOne({
+        // id que seja igual a passada pelo usuario
+        where: { id: id }
+        // apos procurar
+    }).then(pergunta => {
+        if (pergunta != undefined) { // Caso a pergunta seja encontrada
+            res.render("pergunta")
+        } else { // Se ela não for encontrada...
+            res.redirect("/")
+        }
+    })
+})
+
 
 
