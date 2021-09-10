@@ -104,13 +104,15 @@ app.get("/pergunta/:id", (req, res) => {
 app.post("/responder", (req, res) => {
     let corpo = req.body.corpo
     let perguntaId = req.body.pergunta
-    Resposta.create({
-        corpo: corpo,
-        perguntaId: perguntaId
-    }).then(() => {
+    if (corpo === null) {
+        console.log(corpo)
+        Resposta.create({
+            corpo: corpo,
+            perguntaId: perguntaId
+        }).then(() => {
+            res.redirect("/pergunta/" + perguntaId)
+        })
+    } else {
         res.redirect("/pergunta/" + perguntaId)
-    })
+    }  
 })
-
-
-
