@@ -64,8 +64,10 @@ app.post("/salvarpergunta", (req, res) => {
     // Receber dados do formulario e armazenar nas variaveis
     let titulo = req.body.titulo; // Receber valor do input titulo
     let descricao = req.body.descricao; // Receber valor do textarea descricao
-    // Salvar no banco de dados
+    if (titulo !== "" && descricao !== "") {
+        // Salvar no banco de dados
     // INSERT
+        console.log("titulo" + titulo)
     Pergunta.create({
         // Dados que vem das variaveis acima
         titulo: titulo,
@@ -74,6 +76,9 @@ app.post("/salvarpergunta", (req, res) => {
         // Redirecionar o usuario para a pag principal
         res.redirect("/")
     })
+    } else {
+        res.redirect("/")
+    }  
 })
 
 app.get("/pergunta/:id", (req, res) => {
