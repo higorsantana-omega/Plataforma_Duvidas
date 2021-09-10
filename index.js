@@ -109,7 +109,7 @@ app.get("/pergunta/:id", (req, res) => {
 app.post("/responder", (req, res) => {
     let corpo = req.body.corpo
     let perguntaId = req.body.pergunta
-    if (corpo === null) {
+    if (corpo !== "") {
         console.log(corpo)
         Resposta.create({
             corpo: corpo,
