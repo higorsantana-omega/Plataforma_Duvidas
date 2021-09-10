@@ -1,23 +1,26 @@
-<%- include ('./partials/header.ejs'); %> 
-<body>
-    <%- include ('./partials/navbar.ejs'); %> 
-    <div class="container">
-        <h1>Perguntas</h1>
-        <!-- // Percorrer array -->
-        <% perguntas.forEach(pergunta => { %>
+<%- include ('./partials/header.ejs'); %>
 
-            <div class="card mt-5">
-                <div class="card-body">
-                    <h3><p><%= pergunta.titulo %></p></h3>
-                </div>
-                <div class="card-footer">
-                    <a href="/pergunta/<%= pergunta.id %> "><button class="btn btn-primary">Responder</button></a>
-                </div>
+    <body>
+        <%- include ('./partials/navbar.ejs'); %>
+            <div class="container mt-3">
+                <h1 class="text-center">Perguntas</h1>
+                <!-- // Percorrer array -->
+                <% perguntas.forEach(pergunta=> { %>
+                    <div class="card mt-5">
+                        <div class="card-body">
+                            <h3>
+                                <p>
+                                    <%= pergunta.titulo %>
+                                </p>
+                            </h3>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/pergunta/<%= pergunta.id %> "><button
+                                    class="btn btn-primary">Responder</button></a>
+                        </div>
+                    </div>
+                    <% }) %>
             </div>
-        <% }) %>
-    </div>
-    
-</body>
-<%- include ('./partials/footer.ejs'); %> 
 
-
+    </body>
+    <%- include ('./partials/footer.ejs'); %>
